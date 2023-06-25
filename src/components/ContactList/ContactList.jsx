@@ -3,7 +3,17 @@ import PropTypes from 'prop-types';
 import Contact from './Contact';
 import css from './ContactList.module.css';
 
-function ContactList({ contacts, filter, onBtnClick }) {
+export default function ContactList({ contacts, filter, onBtnClick }) {
+  const filterContacts = (contacts, filter) => {
+    if (filter === '') {
+      return contacts;
+    }
+
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   const renderingContacts = filterContacts(contacts, filter);
 
   return (
@@ -26,15 +36,3 @@ ContactList.propTypes = {
   filter: PropTypes.string.isRequired,
   onBtnClick: PropTypes.func.isRequired,
 };
-
-export default ContactList;
-
-function filterContacts(contacts, filter) {
-  if (filter === '') {
-    return contacts;
-  }
-
-  return contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-}
