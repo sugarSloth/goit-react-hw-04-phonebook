@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 
-export default function Filter({ inputValue, onChange }) {
+const Filter = ({ inputValue, onChange }) => {
   return (
     <div className={css.filter}>
       <p>Find contacts by name</p>
@@ -14,9 +14,11 @@ export default function Filter({ inputValue, onChange }) {
       ></input>
     </div>
   );
-}
+};
 
 Filter.propTypes = {
   inputValue: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
+
+export default Filter;

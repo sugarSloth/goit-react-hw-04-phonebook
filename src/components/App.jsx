@@ -6,16 +6,12 @@ import Filter from './Filter';
 import ContactList from './ContactList';
 import css from './App.module.css';
 
-export default function App() {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
+const App = () => {
+  const [contacts, setContacts] = useState(() => {
     const savedContacts = localStorage.getItem('contacts');
-    if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
-    }
-  }, []);
+    return savedContacts ? JSON.parse(savedContacts) : [];
+  });
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -70,7 +66,7 @@ export default function App() {
       <ContactForm onSubmit={addContact} />
       <section className={css.contacts}>
         <h2>Contacts</h2>
-        <Filter value={filter} onChange={onChangeFilterInput} />
+        <Filter inputValue={filter} onChange={onChangeFilterInput} />
         {contacts.length === 0 ? (
           <p>{noContactsMessage}</p>
         ) : renderingContacts.length === 0 ? (
@@ -78,10 +74,11 @@ export default function App() {
         ) : null}
         <ContactList
           contacts={renderingContacts}
-          filter={filter}
           onBtnClick={deleteContact}
         />
       </section>
     </div>
   );
-}
+};
+
+export default App;
