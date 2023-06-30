@@ -1,8 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 
-const Filter = ({ inputValue, onChange }) => {
+export default Filter;
+
+Filter.propTypes = {
+  inputValue: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
+
+function Filter({ inputValue, onChange }) {
   return (
     <div className={css.filter}>
       <p>Find contacts by name</p>
@@ -14,11 +20,4 @@ const Filter = ({ inputValue, onChange }) => {
       ></input>
     </div>
   );
-};
-
-Filter.propTypes = {
-  inputValue: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-};
-
-export default Filter;
+}

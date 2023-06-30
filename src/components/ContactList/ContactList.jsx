@@ -1,9 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Contact from './Contact';
 import css from './ContactList.module.css';
 
-const ContactList = ({ contacts, onBtnClick }) => {
+function ContactList({ contacts, onBtnClick }) {
+ 
+
   return (
     <ul className={css.contact_list}>
       {contacts.map((contact) => (
@@ -17,10 +18,11 @@ const ContactList = ({ contacts, onBtnClick }) => {
       ))}
     </ul>
   );
-};
+}
 
 ContactList.propTypes = {
   contacts: PropTypes.array.isRequired,
+  filter: PropTypes.string.isRequired,
   onBtnClick: PropTypes.func.isRequired,
 };
 
