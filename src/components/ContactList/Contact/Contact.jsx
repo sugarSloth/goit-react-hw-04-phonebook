@@ -1,14 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './Contact.module.css';
 
-export default Contact;
-
-Contact.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
-
 function Contact({ name, number, onClick }) {
   return (
     <>
@@ -20,3 +12,11 @@ function Contact({ name, number, onClick }) {
     </>
   );
 }
+
+Contact.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+export default Contact;
